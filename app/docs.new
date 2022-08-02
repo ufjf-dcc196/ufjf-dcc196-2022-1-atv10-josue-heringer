@@ -1,0 +1,11 @@
+Objetivo:
+         - Conseguir buscar diretamente na API do Github o nome do usuário e conseguir armazenar o resultado encontrado em um histórico para o usuário conseguir acompanhar todas as contas buscadas;
+Problema:
+         - Necessidade de realizar o armazenamento de algumas informações importantes de alguns usuários do github;
+Público Alvo:
+        - Usuários do GitHub;
+Requisitos mínimos:
+        - Buscar o usuário no github através de um campo de busca e armazenar no SharedPreferences os arquivos estáticos ( Nome, Url, Bio e Data de Cadastro )
+        - Ao arrastar para o lado deve ser possível deletar do histórico o usuário encontrado
+Maior Valor possível:
+        - Conseguir armazenar o link da imagem e realizar a exibição da listagem do histórico para facilitar a vizualização
