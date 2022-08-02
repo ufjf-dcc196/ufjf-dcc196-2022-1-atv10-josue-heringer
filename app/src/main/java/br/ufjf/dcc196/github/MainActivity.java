@@ -25,18 +25,21 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+    UsuarioRepositorio repo;
     EditText editTextPesquisa;
     TextView textViewUsuarioNome;
     TextView textViewUsuarioUrl;
     TextView textViewUsuarioBio;
     TextView textViewUsuarioCadastro;
-
+    List<Usuario> usuarios;
     Button btnCreditos;
     OkHttpClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        repo = new UsuarioRepositorio(getApplicationContext());
+        usuarios = repo.getUsuario();
 
         btnCreditos = findViewById(R.id.buttonCreditos);
         btnCreditos.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
                             textViewUsuarioNome.setText("Nome: " + usuario.getNome());
                             textViewUsuarioUrl.setText("Url: " + usuario.getUrl());
                             textViewUsuarioCadastro.setText("Cadastro: "+usuario.getCadastro());
-                            System.out.println(usuario.getBio());
-
+                            usuarios.add(usuario);
                         }
                     });
                 }
