@@ -9,9 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -55,13 +60,18 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
-                    Gson gson = new Gson();
+                   String[] result = myResponse.split(",");
 
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                           String url = result[5].replace("\"", "").replace("url:", "");
+                            String nome = result[18].replace("\"", "").replace("name:", "");
+                            String bio = result[24].replace("\"", "").replace("bio:", "");
+                            String cadastro = result[30].replace("\"", "").replace("created_at:", "");
+                            Usuario usuario = new Usuario(nome, url, bio,cadastro);
+                            System.out.println(usuario.getBio());
 
-                            System.out.println();
                         }
                     });
                 }
