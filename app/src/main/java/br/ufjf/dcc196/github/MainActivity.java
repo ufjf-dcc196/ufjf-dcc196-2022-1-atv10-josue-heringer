@@ -26,6 +26,11 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextPesquisa;
+    TextView textViewUsuarioNome;
+    TextView textViewUsuarioUrl;
+    TextView textViewUsuarioBio;
+    TextView textViewUsuarioCadastro;
+
     Button btnCreditos;
     OkHttpClient client;
     @Override
@@ -61,7 +66,10 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
                    String[] result = myResponse.split(",");
-
+                    textViewUsuarioBio = findViewById(R.id.textViewUsuarioBio);
+                    textViewUsuarioNome = findViewById(R.id.textViewUsuarioNome);
+                    textViewUsuarioUrl = findViewById(R.id.textViewUsuarioUrl);
+                    textViewUsuarioCadastro = findViewById(R.id.textViewUsuarioCadastro);
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -70,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
                             String bio = result[24].replace("\"", "").replace("bio:", "");
                             String cadastro = result[30].replace("\"", "").replace("created_at:", "");
                             Usuario usuario = new Usuario(nome, url, bio,cadastro);
+                            textViewUsuarioBio.setText("Bio: " + usuario.getBio());
+                            textViewUsuarioNome.setText("Nome: " + usuario.getNome());
+                            textViewUsuarioUrl.setText("Url: " + usuario.getUrl());
+                            textViewUsuarioCadastro.setText("Cadastro: "+usuario.getCadastro());
                             System.out.println(usuario.getBio());
 
                         }
