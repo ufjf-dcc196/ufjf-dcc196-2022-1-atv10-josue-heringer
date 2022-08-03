@@ -1,6 +1,6 @@
 # Ranking Seguidores Github
 
-![This is an image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiKTHLvVpYxVI28oFsh4Ct3qW1_wxaNPx-1A&usqp=CAU){ style="display: block; margin: 0 auto" }
+![This is an image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiKTHLvVpYxVI28oFsh4Ct3qW1_wxaNPx-1A&usqp=CAU)
 
 ###### Objetivo
 
@@ -16,7 +16,7 @@
 
 ###### Requisitos mínimos
 
-- Buscar na [API do Github](https://api.github.com/){:target="\_blank"} o login digitado na barra de busca
+- Buscar na [API do Github](https://api.github.com/) o login digitado na barra de busca
 - Apresentar na tela o resultado encontrado
 - Armazenar todos os usuários pesquisados no SharedPreferences
 - Listar todos os usuários pesquisados, ordenando por número de seguidores
