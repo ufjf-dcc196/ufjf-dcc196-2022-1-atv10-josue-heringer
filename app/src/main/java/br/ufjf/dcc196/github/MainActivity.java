@@ -76,16 +76,18 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                           String url = result[5].replace("\"", "").replace("url:", "");
+                           String login = result[0].replace("\"", "").replace("login:", "");
                             String nome = result[18].replace("\"", "").replace("name:", "");
                             String bio = result[24].replace("\"", "").replace("bio:", "");
                             String cadastro = result[30].replace("\"", "").replace("created_at:", "");
-                            Usuario usuario = new Usuario(nome, url, bio,cadastro);
+                            String avatar = result[3].replace("\"", "").replace("avatar_url:", "");
+                            Integer seguidores = Integer.parseInt(result[28].replace("\"", "").replace("followers:", ""));
+                            Usuario usuario = new Usuario(nome, login, bio,cadastro, seguidores,avatar);
                             textViewUsuarioBio.setText("Bio: " + usuario.getBio());
                             textViewUsuarioNome.setText("Nome: " + usuario.getNome());
                             textViewUsuarioUrl.setText("Url: " + usuario.getUrl());
                             textViewUsuarioCadastro.setText("Cadastro: "+usuario.getCadastro());
-                            usuarios.add(usuario);
+                            //usuarios.add(usuario);
                         }
                     });
                 }

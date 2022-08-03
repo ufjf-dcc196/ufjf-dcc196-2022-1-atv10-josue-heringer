@@ -4,15 +4,19 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
     private String nome;
-    private String url;
+    private String login;
     private String bio;
     private String cadastro;
+    private Integer seguidores;
+    private String avatar;
 
-    public Usuario(String nome, String url, String bio, String cadastro){
+    public Usuario(String nome, String login, String bio, String cadastro, Integer seguidores, String avatar){
         this.nome = nome;
-        this.url = url;
+        this.login = login;
         this.bio = bio;
         this.cadastro = cadastro;
+        this.avatar =avatar;
+        this.seguidores = seguidores;
     }
 
     public String getNome() {
@@ -23,12 +27,12 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public String getUrl() {
-        return url;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getBio() {
@@ -45,5 +49,21 @@ public class Usuario implements Serializable {
 
     public void setCadastro(String cadastro) {
         this.cadastro = cadastro;
+    }
+
+    public Integer getSeguidores() {
+        return seguidores;
+    }
+
+    public void setSeguidores(Integer seguidores) {
+        this.seguidores = seguidores;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
