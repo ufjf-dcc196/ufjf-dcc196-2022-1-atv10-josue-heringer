@@ -1,5 +1,6 @@
 # Ranking Seguidores Github
 
+<img align="center"  w="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiKTHLvVpYxVI28oFsh4Ct3qW1_wxaNPx-1A&usqp=CAU">
 ![This is an image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiKTHLvVpYxVI28oFsh4Ct3qW1_wxaNPx-1A&usqp=CAU)
 
 ###### Objetivo
