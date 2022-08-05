@@ -9,13 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -28,11 +22,12 @@ public class MainActivity extends AppCompatActivity {
     UsuarioRepositorio repo;
     EditText editTextPesquisa;
     TextView textViewUsuarioNome;
-    TextView textViewUsuarioUrl;
+    TextView textViewUsuarioLogin;
     TextView textViewUsuarioBio;
     TextView textViewUsuarioCadastro;
     List<Usuario> usuarios;
     Button btnCreditos;
+    Button btnRanking;
     OkHttpClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CreditoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnRanking = findViewById(R.id.buttonRanking);
+        btnRanking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
                 startActivity(intent);
             }
         });
@@ -71,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
                    String[] result = myResponse.split(",");
                     textViewUsuarioBio = findViewById(R.id.textViewUsuarioBio);
                     textViewUsuarioNome = findViewById(R.id.textViewUsuarioNome);
-                    textViewUsuarioUrl = findViewById(R.id.textViewUsuarioUrl);
+                    textViewUsuarioLogin = findViewById(R.id.textViewUsuarioLogin);
                     textViewUsuarioCadastro = findViewById(R.id.textViewUsuarioCadastro);
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                           String login = result[0].replace("\"", "").replace("login:", "");
+                           String login = result[0].replace("\"", "").replace("login: ", "");
                             String nome = result[18].replace("\"", "").replace("name:", "");
                             String bio = result[24].replace("\"", "").replace("bio:", "");
                             String cadastro = result[30].replace("\"", "").replace("created_at:", "");
@@ -85,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             Usuario usuario = new Usuario(nome, login, bio,cadastro, seguidores,avatar);
                             textViewUsuarioBio.setText("Bio: " + usuario.getBio());
                             textViewUsuarioNome.setText("Nome: " + usuario.getNome());
-                            textViewUsuarioUrl.setText("Url: " + usuario.getUrl());
+                            textViewUsuarioLogin.setText("Login: " + usuario.getLogin());
                             textViewUsuarioCadastro.setText("Cadastro: "+usuario.getCadastro());
                             //usuarios.add(usuario);
                         }
