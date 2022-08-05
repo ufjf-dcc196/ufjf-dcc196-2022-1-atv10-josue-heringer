@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/layout/activity_credito.xml" value="0.25462962962962965" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_ranking.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/usuario_layout.xml" value="0.3453125" />
       </map>
     </option>
   </component>
