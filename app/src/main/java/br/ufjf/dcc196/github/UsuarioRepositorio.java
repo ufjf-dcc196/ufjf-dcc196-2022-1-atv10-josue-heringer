@@ -19,7 +19,7 @@ public class UsuarioRepositorio {
 
     public UsuarioRepositorio(Context context){
         this.context = context;
-        preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+        preferences = context.getSharedPreferences(PREFERENCES_NAME, 0);
     }
 
     public void setUsuario(List<Usuario> usuario){
@@ -36,11 +36,22 @@ public class UsuarioRepositorio {
         Gson gson = new Gson();
         List<Usuario> usuariosFromShared = new ArrayList<>();
         String jsonPreferences = preferences.getString(USUARIO_KEY, "");
-
         Type type = new TypeToken<List<Usuario>>(){}.getType();
         usuariosFromShared = gson.fromJson(jsonPreferences, type);
         return usuariosFromShared;
     }
+
+
+    public String getUsuarioString(){
+        return preferences.getString(USUARIO_KEY, "");
+    }
+
+    public void setUsuarioString(String usuarios){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(USUARIO_KEY, usuarios);
+        editor.commit();
+    }
+
 
 
 }

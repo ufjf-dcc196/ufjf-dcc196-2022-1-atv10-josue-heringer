@@ -7,7 +7,7 @@ public class Usuario implements Serializable {
     private String login;
     private String bio;
     private String cadastro;
-    private Integer seguidores;
+    private int seguidores;
     private String avatar;
 
     public Usuario(String nome, String login, String bio, String cadastro, Integer seguidores, String avatar){
@@ -51,11 +51,11 @@ public class Usuario implements Serializable {
         this.cadastro = cadastro;
     }
 
-    public Integer getSeguidores() {
+    public int getSeguidores() {
         return seguidores;
     }
 
-    public void setSeguidores(Integer seguidores) {
+    public void setSeguidores(int seguidores) {
         this.seguidores = seguidores;
     }
 

@@ -45,7 +45,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
         holder.textViewLogin.setText(usuario.getLogin());
         holder.textViewCadastro.setText(usuario.getCadastro());
         holder.textViewRanking.setText(String.valueOf(position + 1));
-        holder.textViewSeguidores.setText(usuario.getSeguidores().toString());
+       holder.textViewSeguidores.setText(usuario.getSeguidores());
 
     }
 

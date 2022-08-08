@@ -15,6 +15,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -39,8 +40,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         repo = new UsuarioRepositorio(getApplicationContext());
-        usuarios = repo.getUsuario();
-
+        usuarios = new ArrayList<Usuario>() {{
+            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
+            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
+            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
+            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
+            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
+        }};
+        repo.setUsuario(usuarios);
         btnCreditos = findViewById(R.id.buttonCreditos);
         btnCreditos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RankingActivity.class);
+                String usuariosString = repo.getUsuarioString();
+                intent.putExtra("usuarios",usuariosString );
                 startActivity(intent);
             }
         });
@@ -75,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onResponse(Call call, Response response) throws IOException {
+                usuarios = repo.getUsuario();
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
                    String[] result = myResponse.split(",");
@@ -90,13 +100,13 @@ public class MainActivity extends AppCompatActivity {
                             String bio = result[24].replace("\"", "").replace("bio:", "");
                             String cadastro = result[30].replace("\"", "").replace("created_at:", "");
                             String avatar = result[3].replace("\"", "").replace("avatar_url:", "");
-                            Integer seguidores = Integer.parseInt(result[28].replace("\"", "").replace("followers:", ""));
-                            Usuario usuario = new Usuario(nome, login, bio,cadastro, seguidores,avatar);
+                            String seguidores = (result[28].replace("\"", "").replace("followers:", ""));
+                            Usuario usuario = new Usuario(nome, login, bio,cadastro, Integer.parseInt(seguidores),avatar);
+                            usuarios.add(usuario);
                             textViewUsuarioBio.setText("Bio: " + usuario.getBio());
                             textViewUsuarioNome.setText("Nome: " + usuario.getNome());
                             textViewUsuarioLogin.setText("Login: " + usuario.getLogin());
                             textViewUsuarioCadastro.setText("Cadastro: "+usuario.getCadastro());
-                            //usuarios.add(usuario);
                         }
                     });
                 }

@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,20 +17,22 @@ import java.util.List;
 public class RankingActivity extends AppCompatActivity {
     private RecyclerView recyclerViewRanking;
     List<Usuario> usuarios;
+    UsuarioRepositorio repo;
     private ItemTouchHelper.SimpleCallback touchHelperCallback;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
-
+        repo = new UsuarioRepositorio(getApplicationContext());
+        usuarios = repo.getUsuario();
+        Bundle bundleExtra = getIntent().getExtras();
+        if(bundleExtra != null){
+            String formatUsuarios = bundleExtra.getString("usuarios");
+            repo.setUsuarioString(formatUsuarios);
+        }
         recyclerViewRanking = findViewById(R.id.recyclerViewRanking);
-        usuarios = new ArrayList<Usuario>() {{
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-        }};
+        usuarios = repo.getUsuario();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewRanking.setLayoutManager(layoutManager);
@@ -44,9 +49,9 @@ public class RankingActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-    int position = viewHolder.getAdapterPosition();
-    usuarios.remove(position);
-    usuarioAdapter.notifyItemRemoved(position);
+                int position = viewHolder.getAdapterPosition();
+                usuarios.remove(position);
+                usuarioAdapter.notifyItemRemoved(position);
             }
         };
         new ItemTouchHelper((touchHelperCallback)).attachToRecyclerView(recyclerViewRanking);
