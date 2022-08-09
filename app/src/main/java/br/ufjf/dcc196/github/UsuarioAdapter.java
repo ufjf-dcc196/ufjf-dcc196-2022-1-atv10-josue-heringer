@@ -45,7 +45,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
         holder.textViewLogin.setText(usuario.getLogin());
         holder.textViewCadastro.setText(usuario.getCadastro());
         holder.textViewRanking.setText(String.valueOf(position + 1));
-       holder.textViewSeguidores.setText(usuario.getSeguidores());
+       holder.textViewSeguidores.setText(String.valueOf(usuario.getSeguidores()));
 
     }
 
@@ -67,5 +67,16 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
             textViewRanking = itemView.findViewById(R.id.textViewRanking);
             textViewSeguidores = itemView.findViewById(R.id.textViewSeguidores);
         }
+    }
+
+    public void remove(int position) {
+        if (position < 0 || position >= usuarios.size()) {
+            return;
+        }
+        usuarios.remove(position);
+    }
+
+    public void add(Usuario usuario) {
+        usuarios.add(usuario);
     }
 }

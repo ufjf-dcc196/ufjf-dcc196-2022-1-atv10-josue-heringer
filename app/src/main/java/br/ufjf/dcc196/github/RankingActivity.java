@@ -26,13 +26,7 @@ public class RankingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ranking);
         repo = new UsuarioRepositorio(getApplicationContext());
         usuarios = repo.getUsuario();
-        Bundle bundleExtra = getIntent().getExtras();
-        if(bundleExtra != null){
-            String formatUsuarios = bundleExtra.getString("usuarios");
-            repo.setUsuarioString(formatUsuarios);
-        }
         recyclerViewRanking = findViewById(R.id.recyclerViewRanking);
-        usuarios = repo.getUsuario();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewRanking.setLayoutManager(layoutManager);
@@ -52,6 +46,7 @@ public class RankingActivity extends AppCompatActivity {
                 int position = viewHolder.getAdapterPosition();
                 usuarios.remove(position);
                 usuarioAdapter.notifyItemRemoved(position);
+                repo.setUsuario(usuarios);
             }
         };
         new ItemTouchHelper((touchHelperCallback)).attachToRecyclerView(recyclerViewRanking);

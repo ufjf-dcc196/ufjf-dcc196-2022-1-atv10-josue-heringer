@@ -62,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RankingActivity.class);
-                String usuariosString = repo.getUsuarioString();
-                intent.putExtra("usuarios",usuariosString );
                 startActivity(intent);
             }
         });
@@ -103,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                             String seguidores = (result[28].replace("\"", "").replace("followers:", ""));
                             Usuario usuario = new Usuario(nome, login, bio,cadastro, Integer.parseInt(seguidores),avatar);
                             usuarios.add(usuario);
+                            repo.setUsuario(usuarios);
                             textViewUsuarioBio.setText("Bio: " + usuario.getBio());
                             textViewUsuarioNome.setText("Nome: " + usuario.getNome());
                             textViewUsuarioLogin.setText("Login: " + usuario.getLogin());
