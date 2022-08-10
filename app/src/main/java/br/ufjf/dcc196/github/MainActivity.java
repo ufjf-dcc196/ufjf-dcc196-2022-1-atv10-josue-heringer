@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         repo = new UsuarioRepositorio(getApplicationContext());
         usuarios = new ArrayList<Usuario>() {{
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
-            add(new Usuario("nome", "login", "bio", "cadastro", 23, "https://avatars.githubusercontent.com/u/43760220"));
+            add(new Usuario("The Laravel Framework", "laravel", "Laravel is a web ecosystem full of delightful tools that are supercharged for developer happiness and productivity.", "2011-08-04T03:44:54Z", 79, "https://avatars.githubusercontent.com/u/958072?v=4"));
+            add(new Usuario("React Community", "reactjs", "React website and its localizations", "2014-01-15T17:46:37Z", 85, "https://avatars.githubusercontent.com/u/6412038?v=4"));
+            add(new Usuario("Node.js", "nodejs", null, "2014-11-25T17:10:50Z", 197, "https://avatars.githubusercontent.com/u/9950313?v=4"));
+            add(new Usuario("Vuejs", "vuejs", "All Over the World", "2013-12-07T06:13:00Z", 118, "https://avatars.githubusercontent.com/u/6128107?v=4"));
+            add(new Usuario("Django", "django", null, "2008-10-06T19:43:18Z", 21, "https://avatars.githubusercontent.com/u/27804?v=4"));
         }};
         repo.setUsuario(usuarios);
         btnCreditos = findViewById(R.id.buttonCreditos);

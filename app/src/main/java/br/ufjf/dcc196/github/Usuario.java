@@ -2,7 +2,7 @@ package br.ufjf.dcc196.github;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public class Usuario implements Comparable<Usuario> {
     private String nome;
     private String login;
     private String bio;
@@ -65,5 +65,14 @@ public class Usuario implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public int compareTo(Usuario outroUsuario) {
+        if (this.seguidores > outroUsuario.getSeguidores()) {
+            return -1;
+        } if (this.seguidores < outroUsuario.getSeguidores()) {
+            return 1;
+        }
+        return 0;
     }
 }

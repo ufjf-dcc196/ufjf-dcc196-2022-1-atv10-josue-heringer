@@ -45,8 +45,9 @@ public class RankingActivity extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 usuarios.remove(position);
-                repo.setUsuario(usuarios);
+                repo.setUsuario(usuarios);usuarios = repo.getUsuario();
                 usuarioAdapter.notifyItemRemoved(position);
+
             }
         };
         new ItemTouchHelper((touchHelperCallback)).attachToRecyclerView(recyclerViewRanking);

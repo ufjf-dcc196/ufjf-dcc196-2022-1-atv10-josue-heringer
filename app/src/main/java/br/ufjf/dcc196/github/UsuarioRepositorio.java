@@ -10,6 +10,8 @@ import com.google.gson.GsonBuilder;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -40,8 +42,11 @@ public class UsuarioRepositorio {
         String jsonPreferences = preferences.getString(USUARIO_KEY, "");
         Type type = new TypeToken<List<Usuario>>(){}.getType();
         usuariosFromShared = gson.fromJson(jsonPreferences, type);
+        Collections.sort(usuariosFromShared);
         return usuariosFromShared;
     }
+
+
 
 
 }
