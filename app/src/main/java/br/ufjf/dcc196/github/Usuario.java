@@ -1,6 +1,9 @@
 package br.ufjf.dcc196.github;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Usuario implements Comparable<Usuario> {
     private String nome;
@@ -44,7 +47,12 @@ public class Usuario implements Comparable<Usuario> {
     }
 
     public String getCadastro() {
-        return cadastro;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Calendar calendar = new GregorianCalendar();
+        sdf.format(calendar.getTime()).toString();
+
+
+        return sdf.format(calendar.getTime()).toString();
     }
 
     public void setCadastro(String cadastro) {
