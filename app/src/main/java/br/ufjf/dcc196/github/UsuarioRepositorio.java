@@ -9,6 +9,8 @@ import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class UsuarioRepositorio {
@@ -40,4 +42,6 @@ public class UsuarioRepositorio {
         usuariosFromShared = gson.fromJson(jsonPreferences, type);
         return usuariosFromShared;
     }
+
+
 }
