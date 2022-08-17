@@ -20,7 +20,10 @@
 - Apresentar na tela o resultado encontrado
 - Armazenar todos os usuários pesquisados no SharedPreferences
 - Listar todos os usuários pesquisados, ordenando por número de seguidores
+- Ao deslizar na listagem para a direita, o usuário deve ser removido do SharedPreferences
 - Adicionar uma tela com as informações do desenvolvedor
-- Informar a data da ultima atualização de um certo usuário armazenado na plataforma
 
 ## Entraga de maior valor
+
+- Conseguir visualizar os principais dados dos usuários e visualizar a imagem do avatar do usuário
+- Realizar a busca na Api do Github
